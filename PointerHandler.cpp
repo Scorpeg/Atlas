@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <fstream>
-#include <string>
+#include <cstring>
 #include "PointerHandler.h"
 #include "Pointer.h"
 #include "AtlasLogger.h"

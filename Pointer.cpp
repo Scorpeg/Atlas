@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <string>
+#include <cstring>
 #include "Pointer.h"
 #include "AtlasLogger.h"
 

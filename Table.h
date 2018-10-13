@@ -12,7 +12,7 @@
 #define SPACE				0x20
 
 #include "stdafx.h"
-#include <string>
+#include <cstring>
 #include <vector>
 #include <fstream>
 #include <map>

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <cstdio>
-#include <string>
+#include <cstring>
 #include <list>
 #include <cstdarg>
 #include "AtlasLogger.h"
@@ -30,7 +30,7 @@ void AtlasLogger::ReportError(unsigned int ScriptLine, const char* FormatStr ...
 
 	va_list arglist;
 	va_start(arglist, FormatStr);
-	int length = _vsnprintf(buf, BufSize, FormatStr, arglist);
+	int length = vsnprintf(buf, BufSize, FormatStr, arglist);
 	va_end(arglist);
 
 	Error.Error = buf;
@@ -46,7 +46,7 @@ void AtlasLogger::ReportWarning(unsigned int ScriptLine, const char* FormatStr .
 
 	va_list arglist;
 	va_start(arglist, FormatStr);
-	int length = _vsnprintf(buf, BufSize, FormatStr, arglist);
+	int length = vsnprintf(buf, BufSize, FormatStr, arglist);
 	va_end(arglist);
 
 	Error.Error.assign(buf, length);

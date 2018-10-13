@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <cstdio>
-#include <string>
+#include <cstring>
 #include "AtlasFile.h"
 #include "Table.h"
 #include "AtlasLogger.h"
@@ -540,32 +540,34 @@ inline unsigned int AtlasFile::WritePascalString(string& text)
 
 	// Truncate string if it overflows ROM bounds
 	if (PascalLength > maxwrite) // PascalLength doesn't even fit
-		goto nowrite;
-	if (maxwrite < size + PascalLength) // PascalLength and maybe partial string fits
+            return size + PascalLength;
+	else
 	{
-		int overflowbytes = (size + PascalLength) - maxwrite;
-		TotalBytesSkipped += overflowbytes;
-		size = maxwrite - PascalLength;
-	}
+		if (maxwrite < size + PascalLength) // PascalLength and maybe partial string fits
+		{
+			int overflowbytes = (size + PascalLength) - maxwrite;
+			TotalBytesSkipped += overflowbytes;
+			size = maxwrite - PascalLength;
+		}
 
-	// Truncate string if it's too long for a fixed length string
-	if (size > StringLength && StringLength != 0)
-	{
-		TotalBytesSkipped += (size - StringLength);
-		size = StringLength - PascalLength;
-		printf("Changed string length for %s to %d at %X\n", text.c_str(), StringLength, GetPosT());
-	}
+		// Truncate string if it's too long for a fixed length string
+		if (size > StringLength && StringLength != 0)
+		{
+			TotalBytesSkipped += (size - StringLength);
+			size = StringLength - PascalLength;
+			printf("Changed string length for %s to %d at %X\n", text.c_str(), StringLength, GetPosT());
+		}
 
-	int swaplen = size;
-	if (bSwap)
-		swaplen = EndianSwap(size, PascalLength);
+		int swaplen = size;
+		if (bSwap)
+			swaplen = EndianSwap(size, PascalLength);
 
-	fwrite(&swaplen, PascalLength, 1, tfile);
-	fwrite(text.c_str(), 1, size, tfile);
-	BytesInserted += size + PascalLength;
+		fwrite(&swaplen, PascalLength, 1, tfile);
+		fwrite(text.c_str(), 1, size, tfile);
+		BytesInserted += size + PascalLength;
 
-nowrite:
-	return size + PascalLength;
+		return size + PascalLength;
+	}	
 }
 
 inline void AtlasFile::AlignString()
@@ -585,7 +587,7 @@ inline void AtlasFile::AlignString()
 	}
 }
 
-inline unsigned int AtlasFile::GetMaxWritableBytes()
+unsigned int AtlasFile::GetMaxWritableBytes()
 {
 	if (MaxScriptPos == -1)
 		return -1;

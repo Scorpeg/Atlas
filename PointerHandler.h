@@ -1,6 +1,6 @@
 #pragma once
 #include <list>
-#include <string>
+#include <cstring>
 #include "Pointer.h"
 #include "GenericVariable.h"
 

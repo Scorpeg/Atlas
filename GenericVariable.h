@@ -1,6 +1,6 @@
 #pragma once
 #include <map>
-#include <string>
+#include <cstring>
 #include <vector>
 #include "AtlasTypes.h"
 

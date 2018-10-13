@@ -1,7 +1,6 @@
 #pragma once
-#include <string>
+#include <cstring>
 #include <list>
-#include <windows.h>
 #include "Table.h"
 #include "GenericVariable.h"
 
@@ -49,5 +48,5 @@ public:
 	ExtensionFunction GetFunction(std::string& FunctionName);
 
 private:
-	HMODULE Extension;
+	void *Extension;
 };

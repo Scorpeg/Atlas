@@ -70,7 +70,7 @@ extern int MaxEmbPtr;
 extern AtlasCore Atlas;
 
 // Misc functions
-inline unsigned int StringToUInt(std::string& NumberString);
+unsigned int StringToUInt(std::string& NumberString);
 __int64 StringToInt64(std::string& NumberString);
 unsigned int GetHexDigit(char digit);
 unsigned int EndianSwap(unsigned int Num, int Size);

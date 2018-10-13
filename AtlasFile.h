@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdio>
-#include <string>
+#include <cstring>
 #include <map>
 #include <iterator>
 #include "Table.h"
@@ -53,7 +53,7 @@ public:
 	bool InsertText(string& Text, unsigned int Line);
 	bool FlushText();
 
-	inline unsigned int GetMaxWritableBytes();
+	unsigned int GetMaxWritableBytes();
 	FILE* GetFileT();
 	FILE* GetFileP();
 	void GetScriptBuf(list<TBL_STRING>& Strings);

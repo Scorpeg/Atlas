@@ -2,14 +2,14 @@
 
 #include "stdafx.h"
 #include <ctime>
-#include <string>
+#include <cstring>
 #include <vector>
-#include <conio.h>
+#include <curses.h>
 #include "AtlasCore.h"
 
 using namespace std;
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
 	clock_t StartTime, EndTime, ElapsedTime;
 	int argoff = 0;

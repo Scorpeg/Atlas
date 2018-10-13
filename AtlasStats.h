@@ -1,6 +1,6 @@
 #pragma once
 #include <list>
-#include <string>
+#include <cstring>
 #include "AtlasTypes.h"
 
 using namespace std;

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include <list>
 #include <cstdlib>
-#include <string>
+#include <cstring>
 #include "AtlasTypes.h"
 #include "AtlasLogger.h"
 #include "AtlasStats.h"
